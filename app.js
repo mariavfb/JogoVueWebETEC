@@ -19,13 +19,15 @@ new Vue({
                 this.vidaMonstro = 0;
                 this.resetarJogo();
             } 
-            this.monstroAtacar();
             const log = {
                 type: 'player',
                 message: `JOGADOR ATINGIU MONSTRO COM ${danoJogador}.`
             };
             this.battleLog.unshift(log);
             console.log('jogoIniciado', this.jogoIniciado);
+            setTimeout(() => {
+                this.monstroAtacar();
+            }, 1000);
         },
         ataqueEspecial() {
             const danoJogador = Math.floor(Math.random() * (10 - 5 + 1)) + 10;
@@ -34,12 +36,14 @@ new Vue({
                 this.vidaMonstro = 0;
                 this.resetarJogo();
             }
-            this.monstroAtacar();
             const log = {
                 type: 'player',
                 message: `JOGADOR ATINGIU MONSTRO COM ${danoJogador}.`
             };
             this.battleLog.unshift(log);
+            setTimeout(() => {
+                this.monstroAtacar();
+            }, 1000);
         },
         monstroAtacar() {
             const danoMonstro = Math.floor(Math.random() * (12 - 7 + 1)) + 7;
@@ -73,7 +77,9 @@ new Vue({
             } else {
                 this.battleLog.unshift({ type: "player", message: "Jogador já está com a vida cheia." });
             }
-            this.monstroAtacar();
+            setTimeout(() => {
+                this.monstroAtacar();
+            }, 1000);
         },
 
     }
