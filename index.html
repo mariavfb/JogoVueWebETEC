@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Matador de Monstro</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="desafio">
+        <div class="panel scores">
+            <div class="score">
+                <h1>Jogador</h1>
+                <div class="life-bar">
+                    <div class="life" :style="{ width: vidaJogador + '%' }"
+                        :class="{ 'life danger': vidaJogador <= 20 }"></div>
+                </div>
+                <div>{{ vidaJogador }}%</div>
+            </div>
+            <div class="score">
+                <h1>Monstro</h1>
+                <div class="life-bar">
+                    <div class="life" :style="{ width: vidaMonstro + '%' }"
+                        :class="{ 'life danger': vidaMonstro <= 20 }"></div>
+                </div>
+                <div>{{ vidaMonstro }}%</div>
+            </div>
+
+        </div>
+        <div class="panel result">
+            <div class="win" v-if="vidaMonstro <= 0"> ganhou </div>
+            <div class="lose" v-if="vidaJogador <= 0"> perdeu </div>
+        </div>
+
+        <div class="panel buttons">
+            <template v-if="jogoIniciado && vidaJogador > 0 && vidaMonstro > 0">
+                <button class="btn attack" @click="atacar">Ataque</button>
+                <button class="btn especial-attack" @click="ataqueEspecial()">Ataque Especial</button>
+                <button class="btn heal" @click="curar()">Curar</button>
+                <button class="btn give-up" @click="resetarJogo">Desistir</button>
+            </template>
+            <button v-else class="btn new-game" v-if="!jogoIniciado" @click="iniciar()">Iniciar Jogo</button>
+        </div>
+
+        <div class="panel logs">
+            <ul>
+                <li v-for="log in battleLog" :class="log.type">{{ log.message }}</li>
+            </ul>
+        </div>
+
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
