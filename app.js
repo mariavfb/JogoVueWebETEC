@@ -19,7 +19,9 @@ new Vue({
                 this.vidaMonstro = 0;
                 this.resetarJogo();
             } 
-            this.monstroAtacar();
+            setTimeout(() => {
+                this.monstroAtacar();
+            }, 1000);
             const log = {
                 type: 'player',
                 message: `JOGADOR ATINGIU MONSTRO COM ${danoJogador}.`
@@ -34,7 +36,9 @@ new Vue({
                 this.vidaMonstro = 0;
                 this.resetarJogo();
             }
-            this.monstroAtacar();
+            setTimeout(() => {
+                this.monstroAtacar();
+            }, 1000);
             const log = {
                 type: 'player',
                 message: `JOGADOR ATINGIU MONSTRO COM ${danoJogador}.`
@@ -73,7 +77,9 @@ new Vue({
             } else {
                 this.battleLog.unshift({ type: "player", message: "Jogador já está com a vida cheia." });
             }
-            this.monstroAtacar();
+            setTimeout(() => {
+                this.monstroAtacar();
+            }, 1000);
         },
 
     }
